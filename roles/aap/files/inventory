@@ -1,0 +1,47 @@
+[automationcontroller]
+ansible00.penguinpages.local
+
+[automationcontroller:vars]
+peers=execution_nodes
+
+[execution_nodes]
+
+[automationhub]
+ansiblehub00.penguinpages.local
+
+#### HAS TO BE IT'S OWN NODE
+[automationcatalog]
+#ansible00.penguinpages.local
+
+[database]
+#ansible00.penguinpages.local
+
+#### HAS TO BE IT'S OWN NODE
+[sso]
+#ansible00.penguinpages.local
+
+# Variables set for ansible to consume for deployment as non-root account
+[all:vars]
+ansible_user=ansible
+ansible_ssh_private_key_file='/home/ansible/.ssh/id_ed25519'
+ansible_become_pass='CDW@1lab'
+admin_password='CDW@1lab'
+pg_host=''
+pg_port=5432
+pg_database='awx'
+pg_username='awx'
+pg_password='CDW@1lab'
+pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
+registry_url='registry.redhat.io'
+registry_username='penguinpages-ansible'
+registry_password='eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJjMmQ0ZjM5NDM3MDQ0YTVkOGFjNWZiOTJhMDFjM2JjOSJ9.SGlG2D_Dax_bQwZbYRY21PCRgoS-1_J8p8ppDSzMrOWpd2KCwgVzKwDMj0rXtxq7995NvSKKpRplWaZ2SBKPK40xI1f6eVcDsAKFEBtjSnwV1mIRE4KvkIcd39qx8uFkwUckfWjbaTYx6xVVeUNPE08WegFZoOfAOJdzUOd7T0T2HLm0oKftJCoRKvg1FIKt1eK1Q6SxY8l_b4HF5uL50xeeWCQlujVYJnZZ3IVpwswL5Nc7wNtKMTxCCROo7kyiaYxgLCFQzK1vxdKK3znIjFE2g84YiQy9tX2glV7OOeVn6hlnQfE0qHppe1Sfopwt4r3tGRlAvkhGEd9UeXZiADzDnnpChpYB8MtLURo_64GdJ2NIHS9pQMMancL433Z4Vagjb4KaWOt0cQso45ASUaa7wLIWL6-K0QBvLt1fMIJTn0JczmSxN0PjEQwn47obcXyzWcEYEdRCFRj5fYfCoypMluAYokninWCuxrsfHnMhgUmYtAdbl8g676REPvBDwXWsPwHNsvyztvP51WmiIcALsJeaYancLO9EgvNR6YhnG1YmhaCVkVPcxyk1lita8JFcGqjZ8wVRDu_0zaBJVuUvG0nh6ipfaTz5FTa16xWdXiiIovem7FlZ3egbqObGPwZJpLOYj3Ksm26tXNuUi3p8W7adQ1PozIkO2Kk99oc'
+receptor_listener_port=27199
+
+# Automation Hub Configuration
+automationhub_admin_password='CDW@1lab'
+automationhub_pg_host='ansible00'
+automationhub_pg_port=5432
+automationhub_pg_database='automationhub'
+automationhub_pg_username='automationhub'
+automationhub_pg_password='CDW@1lab'
+automationhub_pg_sslmode='prefer'

@@ -1,1 +1,34 @@
 ---
+# This is just default ansible parsed file for host inventory
+# v0.1 20220722
+# file: /hosts.yml
+# Global Hosts files for group structure
+# Ex: ansible-playbook ./roles/role_ping_nodes.yml --limit hci_hosts
+# Note: Setting for each group we can set expected 
+all:
+  children:
+###### Physical HyperConverge Server Devices for environment ###########
+    aap_hosts: # Nodes for hosting VMs
+      hosts:
+        ansibl00:
+          mgmt_nic: ens192 # Mgmt nic
+          ip: 172.16.100.38
+        ansiblhub00:
+          mgmt_nic: ens192 # Mgmt nic
+          ip: 172.16.100.37
+      vars:  # Variables for group aap_hosts
+        ansible_ssh_pass: "{{ vault_ansible_sudo_password }}" # This would be if you did not have aap and needed to create passwords in code
+        aap_ignition_node: ansible00 # This is node we deployed from
+
+###### Network Devices for environment ###########
+    group_switches: # Network switches in environment
+      hosts:
+        sw0: # main switch
+          ansible_ssh_common_args: "-c aes256-cbc"
+          ansible_user: ansible
+          ansible_connection: local
+          ip: 172.16.100.254
+        rt1: # main lab router
+          ansible_user: ansible
+          ansible_connection: local
+          ip: 172.16.100.1
