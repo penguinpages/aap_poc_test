@@ -1,6 +1,7 @@
 ---
 # Goal: aap  host 172.16.100.38  ansible00.penguinpages.local # create folder object
 # Documentation: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+- name: AAP_Host
 - hosts: aap_hosts
 
 tasks:
