@@ -1,15 +1,12 @@
 ---
 # Goal: rt1.penguinpages.local  172.16.100.1  # collect inventory
 # Documentation: 
--name: this will automate our firewall
--hosts: pfsense
+- name: this will automate our firewall
+  hosts: pfsense
   roles:
-  - pfsense_setup
-
--name: Collect PFSense Firewall Inventory
-  # set_fact:
-  #   host_timezone: America/Chicago
-  #   host_ntp_server: 216.239.35.0:123
-tasks:
--name: pfsense_setup
+    - pfsense_setup
+  tasks:
+    - name: pfsense_setup
+      roles:
+        - { role: firewall }
 

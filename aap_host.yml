@@ -2,11 +2,11 @@
 # Goal: aap  host 172.16.100.38  ansible00.penguinpages.local # create folder object
 # Documentation: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
 - name: AAP_Host
-- hosts: aap_hosts
+  hosts: all
 
-tasks:
-- name: Create a directory ~/test if it does not exist
-  ansible.builtin.file:
-    path: /home/ansible/test
-    state: directory
-    mode: '0755'
+  tasks:
+  - name: Create a directory ~/test if it does not exist
+    ansible.builtin.file:
+      path: /home/ansible/test
+      state: directory
+      mode: '0755'
